@@ -1,7 +1,0 @@
-Serve do vue:  npm run serve
-
-
-backend fake: instal e colocar on
-npm install -g json-server
-json-server --watch db.json
-
