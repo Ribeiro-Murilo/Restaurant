@@ -3,7 +3,7 @@
   <div class="category-menu">
     <ul>
       <li
-        v-for="  in categoriesList"
+        v-for=" category in categoriesList"
         :key="category.id"
         @click="onCategoryClick(category.id)"
         :class="{ active: isActive(category.id) }"
