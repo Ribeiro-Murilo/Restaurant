@@ -47,7 +47,7 @@ export default {
     this.onCategoryClick("pizza");
   },
   methods: {
-    onCategoryClick(id) {
+    onCategoryClick(id) {id
       this.selectedCategory = id;
       this.$store.dispatch("changeCategory", id);
     },
