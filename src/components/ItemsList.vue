@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 import Item from "./Item.vue";
 import Loading from "./LoadingItem.vue";
 
@@ -218,25 +217,22 @@ export default {
     changeItemsList() {
       let variableSelected = this.selectedCategory;
       let changeVariable = this.selected.replace(" ", variableSelected);
-      console.log(changeVariable);
       if (changeVariable == "pizzaList") {
         this.itemsList = this.pizzaList;
       }
-      if(changeVariable == "drinksList"){
-        this.itemsList = this.drinksList
+      if (changeVariable == "drinksList") {
+        this.itemsList = this.drinksList;
       }
-      if(changeVariable == "desertsList"){
-        this.itemsList = this.desertsList
+      if (changeVariable == "desertsList") {
+        this.itemsList = this.desertsList;
       }
-      if(changeVariable == "comboList"){
-        this.itemsList = this.comboList
+      if (changeVariable == "comboList") {
+        this.itemsList = this.comboList;
       }
-      if(changeVariable == "burguersList"){
-        this.itemsList = this.burguersList
+      if (changeVariable == "burguersList") {
+        this.itemsList = this.burguersList;
       }
-
       this.variableSelected = this.itemsList;
-      // console.log(this.variableSelected)
     },
   },
   watch: {

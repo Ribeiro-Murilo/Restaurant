@@ -34,11 +34,11 @@ export default {
   data() {
     return {
       categoriesList: [
+        { label: "Combos", icon: "Combo", id: "combo" },
         { label: "Pizza", icon: "Pizza", id: "pizza" },
+        { label: "Burguers", icon: "Burguer", id: "burguers" },
         { label: "Bebidas", icon: "Drinks", id: "drinks" },
         { label: "Doces", icon: "Deserts", id: "deserts" },
-        { label: "Combos", icon: "Combo", id: "combo" },
-        { label: "Burguers", icon: "Burguer", id: "burguers" },
       ],
       selectedCategory: "",
     };

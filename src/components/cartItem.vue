@@ -1,5 +1,4 @@
 <!-- div do item no carrinho tanto para celular quanto para desktop-->
-
 <template>
   <div class="item">
     <ItemQuantity :item="item" />

@@ -1,7 +1,7 @@
 <!-- div do item home tanto para celular quanto para desktop-->
 <template>
   <div class="item" @click="addToCart">
-    <div class="conteiner" >
+    <div class="conteiner">
       <div class="item--tag" v-if="item.offer">Oferta</div>
       <img class="item--img" :src="imagePath" alt="" />
     </div>
@@ -15,10 +15,21 @@
 
 <script>
 import Mixin from "@/mixins/mixins";
+import { db } from "@/components/db/dbase";
+// import addToCart from "@/components/addToCart.vue"
 
 export default {
   name: "Item-List",
   mixins: [Mixin],
+  data() {
+    return{
+      id: this.item.id,
+      name: this.item.name,
+      description: this.item.description,
+      price: this.item.price,
+      offer: this.item.offer,
+    };
+  },
   filters: {
     currency(value) {
       if (!value) {
@@ -31,6 +42,7 @@ export default {
   },
   props: {
     item: {},
+    //selectedID: ""
   },
   computed: {
     imagePath() {
@@ -38,14 +50,45 @@ export default {
       return require(`../assets/images/${this.item.id}.png`);
     },
   },
+  created(){
+    // this.console();
+  },
   methods: {
     addToCart() {
       if (this.isDesktop()) {
         this.$store.dispatch("addToCart", this.item);
         return;
       }
-      this.$router.push({ name: "addToCart", params: { id: this.item.id } });  //usado para entrar no precarrinho para celular
+      this.removePreviousItem();
+      this.itemSelected();
+      this.$router.push({ name: "addToCart", params: { id: this.item.id } }); //usado para entrar no precarrinho para celular
     },
+
+    removePreviousItem(){
+      db.selectedItem.clear()
+    },
+    async itemSelected() {
+      try {
+        const id = await db.selectedItem.add({
+          id: this.id,
+          name: this.name,
+          description: this.description,
+          price: this.price,
+          offer: this.offer,
+        });
+        this.status = `selectedItem ${this.name}
+            successfully added. Got id ${id}`;
+      } catch (error) {
+        this.status = `Failed to add
+            ${this.name}: ${error}`;
+            // console.log("erro add to db")
+      }
+    },
+    console(){
+      //console.log("item.vue = "+this.id)
+      console.log(this.itemID)
+      
+    }
   },
 };
 </script>
@@ -81,7 +124,7 @@ export default {
   &--name {
     font-weight: 600;
     font-size: 18px;
-    margin: 8px auto;
+    margin: 0 auto;
     text-align: center;
   }
   &--description {
@@ -105,7 +148,7 @@ export default {
     margin-top: 10px;
   }
   @media @small-desktop {
-    margin: 0 auto 30px ;
+    margin: 0 auto 30px;
   }
   @media @tablets {
     width: 75%;

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import CategoryMenu from "@/components/CategoryMenu.vue";
 import ItemsList from "@/components/ItemsList.vue";
 import Cart from "@/components/cart.vue";
