@@ -2,7 +2,7 @@
 <template>
   <div class="items-list">
     <Loading v-if="isLoading" />
-    <item v-for="item in itemsList" :key="item.id" :item="item"> </item>
+    <item class="item" v-for="item in itemsList" :key="item.id" :item="item"> </item>
   </div>
 </template>
 
@@ -251,6 +251,9 @@ export default {
   @media @small-desktop {
     flex-wrap: wrap;
     margin: 20px;
+  }
+  .item{
+    cursor: pointer;
   }
 }
 </style>

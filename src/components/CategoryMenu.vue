@@ -60,6 +60,7 @@ export default {
 
 <style lang="less" scoped>
 .category-menu {
+  min-width: 130px;
   width: 130px;
   height: 100vh;
   background: white;
